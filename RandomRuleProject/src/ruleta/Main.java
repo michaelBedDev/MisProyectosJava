@@ -1,4 +1,4 @@
-package random;
+package ruleta;
 
 import java.security.SecureRandom;
 import java.util.Scanner;

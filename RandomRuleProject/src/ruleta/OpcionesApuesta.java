@@ -1,4 +1,4 @@
-package random;
+package ruleta;
 
 public class OpcionesApuesta {
 
