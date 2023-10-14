@@ -5,40 +5,29 @@ import java.util.Scanner;
 public class PreguntasApuesta {
 	
 	OpcionesApuesta opciones;
-
-	double apuestaQuestion () {
+	
+	public Resultado apuestaQuestion () { /*CORREGIR EL TIPO DE DATO DEL QUE QUEREMOS RETURN*/
 		Scanner sc = new Scanner(System.in); /*IMPORT SCANNER*/
 
 		System.out.println("Cuál es su cantidad inicial introducida? en €");
 		float banca = sc.nextFloat(); /*SET CANTIDAD INICIAL*/
+		int [] numerosApostados;
+		int apuesta;
+		double apuestaFinal;
+		/*NECESITAMOS RETURN DE NUMEROS APOSTADOS, APUESTA Y BANCA*/
 		
-		while (banca > 0) {  /*SETEAMOS EL LOOP*/
+		if (banca > 0) {  /*SETEAMOS EL LOOP*/ /*ARREGLAR EL LOOP*/
 			
-			int apuestaUsuario; int cantidadApuesta; 
+			/*HACEMOS PRINT AL USUARIO DE LAS APUESTAS POSIBLES Y RECOGEMOS SU OPCION DEL 1 AL 16 POR TECLADO*/
+			int apuestaUsuario; 
 			
-			System.out.println("A qué deseas apostar?");
-			System.out.println("Número cualquiera \t [0]");
-			System.out.println("Rojo \t\t[1]");
-			System.out.println("Negro \t\t[2]");
-			System.out.println("Par \t\t[3]");
-			System.out.println("Impar \t\t[4]");
-			System.out.println("Falta \t\t[5]");
-			System.out.println("Pasa \t\t[6]");
-			System.out.println("Columna 1 \t[7]");
-			System.out.println("Columna 2 \t[8]");
-			System.out.println("Columna 3 \t[9]");
-			System.out.println("Docena 1-12 \t[10]");
-			System.out.println("Docena 13-24 \t[11]");
-			System.out.println("Docena 25-36 \t[12]");
-			System.out.println("Sector del 0 \t[13]");
-			System.out.println("Vecinos del 0 \t[14]");
-			System.out.println("Huérfanos \t[15]");
-			System.out.println("Serie 5/8 \t[16]");
-			
+			OpcionesApuesta print = new OpcionesApuesta(); //Instanciamos la variable con un nuevo objeto para hacer print
+			print.printApuestasPosibles();
+
+			//Recogemos por teclado el tipo de apuesta seleccionado por el usuario
 			apuestaUsuario = sc.nextInt();
 			
-			int [] numerosApostados;
-			int apuesta;
+			/*Casos de apuesta del usuario*/
 			
 			switch (apuestaUsuario) {
 				case 0:
@@ -59,41 +48,103 @@ public class PreguntasApuesta {
 					System.out.println("Introduce el importe a apostar");
 					apuesta = sc.nextInt();
 					banca =- apuesta;
-					double apuestaFinal = apuesta/numerosApostados.length;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 2:
 					numerosApostados = opciones.negro;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 3:
 					numerosApostados = opciones.par;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 4:
 					numerosApostados = opciones.impar;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 5:
 					numerosApostados = opciones.falta;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 6:
 					numerosApostados = opciones.pasa;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 7:
 					numerosApostados = opciones.columna1;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 8:
 					numerosApostados = opciones.columna2;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 9:
 					numerosApostados = opciones.columna3;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 10:
 					numerosApostados = opciones.num1_12;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 11:
 					numerosApostados = opciones.num13_24;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 12:
 					numerosApostados = opciones.num25_36;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 13:
 					numerosApostados = opciones.sector_0;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 14:
 					numerosApostados = opciones.vecinos_0;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 15:
 					numerosApostados = opciones.huerfanos;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				case 16:
 					numerosApostados = opciones.serie_58;
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					banca =- apuesta;
+					apuestaFinal = apuesta/numerosApostados.length;
 				default:
 					System.out.println("Introduce un número válido por favor");
 			}					
 		}
-		return banca apuestaFinal;
+		return new Resultado(numerosApostados, apuestaFinal, banca); //ARREGLAR ESTO
+	
 	}
+	
 }

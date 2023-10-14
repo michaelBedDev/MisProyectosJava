@@ -2,16 +2,18 @@ package ruleta;
 
 public class MensajeGanarPerder {
 
-	void ganarPerder (int tirada, int numeroapostado, float banca, float apuesta) {
+	void ganarPerder (int [] numerosApostados, float banca, double apuestaFinal, int tirada) {
 		
-		if (numeroapostado == tirada) {
-			banca += 35*apuesta; //CAMBIAR
-			System.out.println("Has Ganado! Tu nueva cantidad es: " + banca + "€");
-		}else if(numeroapostado != tirada) {
-			banca -= apuesta;
-			System.out.println("Has Perdido esta vez. Tu nueva cantidad es: " + banca + "€");
-		}
-		System.out.println();
+		
+		for (int elemento : numerosApostados) {
+            if (elemento == tirada) {
+                System.out.println("Enhorabuena, tu apuesta ha sido ganadora.");
+                System.out.println("Tu nueva cantidad es de " + (banca+apuestaFinal*36));   
+            }else {
+            	System.out.println("Lo sentimos, no has ganado esta vez.");
+            	System.out.println("Tu nueva cantidad es de " + banca);
+            }
+        }
 		
 	}
 }

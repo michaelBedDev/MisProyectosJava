@@ -3,12 +3,17 @@ package ruleta;
 import java.security.SecureRandom;
 
 public class GiroRuleta {
-
-	int giroRule (int pausaVeces) throws InterruptedException {
+	
+		int tirada () throws InterruptedException {
 		
+		/*NUMERO RANDOM*/
 		SecureRandom rand = new SecureRandom(); /*IMPORT RANDOM*/
+        int upperbound = 37; /*NUMERO MAXIMO*/
+		int tirada = rand.nextInt(upperbound);
+		
 		/*APLICAMOS UNA PAUSA EN SEGUNDOS*/
 		System.out.println("No va más");
+		int pausaVeces = 4;
 		
 		//ARRAY PARA IMPRIMIR MENSAJE POR PANTALLA
         String[] lanzamientoBola = {"","Lanzamos la bolita","Gira, gira","AY ESE REBOTE"};
@@ -18,11 +23,6 @@ public class GiroRuleta {
             }
         
         System.out.println();
-		
-
-        /*NUMERO RANDOM*/
-        int upperbound = 37; /*NUMERO MAXIMO*/
-		int tirada = rand.nextInt(upperbound);
 		return tirada;
-	}
+		}
 }
