@@ -3,7 +3,7 @@ package ruleta;
 public class Main {
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		
 		Ruleta rule = new Ruleta();
@@ -20,7 +20,7 @@ public class Main {
 		
 			
 		/*MÉTODO TIRADA*/
-	     rule.tirada();
+	    rule.giro.giroRule(4);
 			
 	
 			/*METODO ROJO NEGRO O 0
@@ -28,7 +28,7 @@ public class Main {
 			
 			
 			/*Otro temporizador más*//*METODO TIEMPO ESPERA*/
-
+	    	rule.pausa.tiempoEspera(2);
 			
 			/*MENSAJE DE GANADOR/PERDEDOR*/  //AJUSTAR PARA NUEVOS TIPOS DE APUESTA
 	

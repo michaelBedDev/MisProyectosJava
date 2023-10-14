@@ -4,12 +4,12 @@ import java.security.SecureRandom;
 
 public class GiroRuleta {
 
-	public int giroRule () throws InterruptedException {
+	int giroRule (int pausaVeces) throws InterruptedException {
 		
 		SecureRandom rand = new SecureRandom(); /*IMPORT RANDOM*/
 		/*APLICAMOS UNA PAUSA EN SEGUNDOS*/
 		System.out.println("No va más");
-		int pausaVeces = 4;
+		
 		//ARRAY PARA IMPRIMIR MENSAJE POR PANTALLA
         String[] lanzamientoBola = {"","Lanzamos la bolita","Gira, gira","AY ESE REBOTE"};
         for (int i = pausaVeces; i > 0; i--) {

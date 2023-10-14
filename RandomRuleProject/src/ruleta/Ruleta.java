@@ -6,6 +6,8 @@ public class Ruleta {
 
 	OpcionesApuesta opcionesApuesta;
 	Dibujo dibujoprint;
+	GiroRuleta giro;
+	Temporizador pausa;
 	
 	void tirada () throws InterruptedException {
 		
