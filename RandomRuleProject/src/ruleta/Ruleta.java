@@ -8,6 +8,7 @@ public class Ruleta {
 	Temporizador pausa;
 	PreguntasApuesta preguntas;
 	MensajeGanarPerder mensaje;
+	RojoNegro_0 color_paridad;
 	
 	
 }

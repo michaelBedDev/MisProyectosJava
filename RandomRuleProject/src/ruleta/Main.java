@@ -26,8 +26,8 @@ public class Main {
 	    rule.giro.tirada(); //Lanzamos la bolita 
 			
 	
-		/*METODO ROJO NEGRO O 0
-			
+		/*METODO ROJO NEGRO O 0*/
+		rule.color_paridad.RojoNegro0(rule.giro.tirada());
 			
 			
 		/*Otro temporizador más*//*METODO TIEMPO ESPERA*/
