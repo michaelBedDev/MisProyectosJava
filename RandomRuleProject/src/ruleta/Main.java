@@ -11,11 +11,10 @@ public class Main {
 
 		/*MÉTODO DIBUJAR MENSAJE INICIAL*/
 		//Print inicial
-		Dibujo dibujoprint = new Dibujo();
-		dibujoprint.dibujoini();
-		/*ES LO MISMO QUE ------ NECESITO INSTANCIAR UN METODO EN UN OBJETO SIEMPREPARA QUE FUNCIONE NO EN UNA CLASE
-		rule.dibujoprint = dibujoprint;
-		rule.dibujoprint.dibujoini(); */
+		Dibujo dibujoprint = new Dibujo(); //NECESITO INSTANCIAR UN METODO EN UN OBJETO SIEMPREPARA QUE FUNCIONE NO EN UNA CLASE
+		dibujoprint.dibujoini(); /*ES LO MISMO QUE  rule.dibujoprint = dibujoprint;
+		                                            rule.dibujoprint.dibujoini(); */
+		
 
 //AQUI HAY UN LOOP if BANCA > 0. QUIZAS SE DEBERIA INTRODUCIR TODO EL EL LOOP A PARTIR DE AQUI?
 		/*METODO OPCIONES APUESTA*/
