@@ -1,5 +1,7 @@
 package ruleta;
 
+import java.util.Scanner;
+
 public class Main {
 
 
@@ -7,38 +9,179 @@ public class Main {
 		
 		
 		Ruleta rule = new Ruleta();
-		
-
+	
 		/*MÉTODO DIBUJAR MENSAJE INICIAL*/
-		//Print inicial
-		 
-		Dibujo.dibujoini();
+		Ruleta.dibujoini();
 		
 
-//AQUI HAY UN LOOP if BANCA > 0. QUIZAS SE DEBERIA INTRODUCIR TODO EL EL LOOP A PARTIR DE AQUI?
-		/*METODO OPCIONES APUESTA*/
-		rule.preguntas.apuestaQuestion(); //Preguntamos al usuario por su tipo de apuesta y cantidad
-		
-		//Get de las variables necesarias para calcular el retorno después de la apuesta del usuario
-		Resultado resultado = rule.preguntas.apuestaQuestion();
-		int[] numerosApostados = resultado.getNumerosApostados();
-		double apuestaFinal = resultado.getApuestaFinal();
-		float banca = resultado.getBanca();		
+		//AQUI HAY UN LOOP if BANCA > 0
+		while (rule.banca > 0) {
 			
-		/*MÉTODO TIRADA*/
-	    rule.giro.tirada(); //Lanzamos la bolita 
+			Scanner sc = new Scanner(System.in); /*IMPORT SCANNER*/
+
+			/*SET CANTIDAD INICIAL*/
+			System.out.println("Cuál es su cantidad inicial introducida? en €");
 			
-		/*METODO ROJO NEGRO O 0*/
-		RojoNegro_0.RojoNegro0(rule.giro.tirada());
+			rule.setBanca(sc.nextDouble()); /*SET CANTIDAD INICIAL*/                                                                                        //??????????????????????
 			
-		/*Otro temporizador más*//*METODO TIEMPO ESPERA*/
-	    Temporizador.tiempoEspera(2);
+
+			/*HACEMOS PRINT AL USUARIO DE LAS APUESTAS POSIBLES Y RECOGEMOS SU OPCION DEL 1 AL 16 POR TECLADO*/
+			OpcionesApuesta.printApuestasPosibles();
+
+			//Recogemos por teclado el tipo de apuesta seleccionado por el usuario (opciones 1-16)
+			int apuestaUsuario = sc.nextInt();
+			int apuesta; //Preguntamos al usuario el importe a apostar
+				
+			OpcionesApuesta seleccion = new OpcionesApuesta();
+			/*Casos de apuesta del usuario*/
+			switch (apuestaUsuario) {
+				case 0:
+					System.out.println("Introduzca los números que desea apostar separados por comas: ");
+					String entradaNumerosApostados = sc.nextLine();
+					
+					String[] cadenaNumerosApostados = entradaNumerosApostados.split(",");
+			        
+			        // Crear una matriz de enteros para almacenar los números
+			        int []seleccionApuesta = new int[cadenaNumerosApostados.length];
+			        
+			        // Convertir las cadenas a números enteros y almacenarlos en la matriz
+			        for (int i = 0; i < cadenaNumerosApostados.length; i++) {
+			        	seleccionApuesta[i] = Integer.parseInt(cadenaNumerosApostados[i]);
+			        	rule.setNumerosApostados(seleccionApuesta);
+			        }
+			        break;
+				case 1:
+					rule.setNumerosApostados(seleccion.rojo);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 2:
+					rule.setNumerosApostados(seleccion.negro);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 3:
+					rule.setNumerosApostados(seleccion.par);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 4:
+					rule.setNumerosApostados(seleccion.impar);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 5:
+					rule.setNumerosApostados(seleccion.falta);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 6:
+					rule.setNumerosApostados(seleccion.pasa);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 7:
+					rule.setNumerosApostados(seleccion.columna1);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 8:
+					rule.setNumerosApostados(seleccion.columna2);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 9:
+					rule.setNumerosApostados(seleccion.columna3);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 10:
+					rule.setNumerosApostados(seleccion.num1_12);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 11:
+					rule.setNumerosApostados(seleccion.num13_24);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 12:
+					rule.setNumerosApostados(seleccion.num25_36);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 13:
+					rule.setNumerosApostados(seleccion.sector_0);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 14:
+					rule.setNumerosApostados(seleccion.vecinos_0);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 15:
+					rule.setNumerosApostados(seleccion.huerfanos);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				case 16:
+					rule.setNumerosApostados(seleccion.serie_58);
+					System.out.println("Introduce el importe a apostar");
+					apuesta = sc.nextInt();
+					rule.setBanca(rule.banca-=apuesta);
+					rule.setApuestaFinal(apuesta/rule.getNumerosApostados().length);
+					break;
+				default:
+					System.out.println("Introduce un número válido por favor");
+					break;
+			}
+			sc.close();
 			
-		/*MENSAJE DE GANADOR/PERDEDOR*/  
-	    MensajeGanarPerder.ganarPerder(numerosApostados, banca, apuestaFinal, rule.giro.tirada());
 			
-		
+	
+			/*MÉTODO TIRADA*/
+			int tirada = rule.tiradaRuleta(); //Lanzamos la bolita 
 			
+			/*METODO ROJO NEGRO O 0*/
+			Ruleta.comprobacionRojoNegro0(tirada);
+			
+			/*Otro temporizador más*//*METODO TIEMPO ESPERA*/
+			Ruleta.tiempoEspera(2);
+			
+			/*MENSAJE DE GANADOR/PERDEDOR*/  
+			Ruleta.ganarPerder(rule.getNumerosApostados(), rule.getBanca(), rule.getApuestaFinal(), tirada);
+	    
 		}
 	}
-
+}
