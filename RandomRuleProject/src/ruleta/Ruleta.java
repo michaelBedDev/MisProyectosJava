@@ -10,6 +10,16 @@ public class Ruleta {
 	double apuestaFinal;
 	double banca;
 
+	
+	//CONSTRUCTORES
+	Ruleta(double d) {
+		setBanca(d);
+	}
+	
+	Ruleta() {
+		
+	}
+	
 
     //DIBUJO INICIAL
     static void dibujoini () {

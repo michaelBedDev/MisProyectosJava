@@ -8,21 +8,23 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		
 		
-		Ruleta rule = new Ruleta();
+		Ruleta rule = new Ruleta(1);
 	
 		/*MÉTODO DIBUJAR MENSAJE INICIAL*/
 		Ruleta.dibujoini();
 		
-
+		
+		Scanner sc = new Scanner(System.in); /*IMPORT SCANNER*/
+		
+		
+		/*SET CANTIDAD INICIAL*/
+		System.out.println("Cuál es su cantidad inicial introducida? en €");
+		rule.setBanca(sc.nextDouble()); /*SET CANTIDAD INICIAL*/   
+		
+		
+//ARREGLAR LA BANCA NO PUEDE SER NEGATIVA		
 		//AQUI HAY UN LOOP if BANCA > 0
 		while (rule.banca > 0) {
-			
-			Scanner sc = new Scanner(System.in); /*IMPORT SCANNER*/
-
-			/*SET CANTIDAD INICIAL*/
-			System.out.println("Cuál es su cantidad inicial introducida? en €");
-			
-			rule.setBanca(sc.nextDouble()); /*SET CANTIDAD INICIAL*/                                                                                        //??????????????????????
 			
 
 			/*HACEMOS PRINT AL USUARIO DE LAS APUESTAS POSIBLES Y RECOGEMOS SU OPCION DEL 1 AL 16 POR TECLADO*/
@@ -35,7 +37,7 @@ public class Main {
 			OpcionesApuesta seleccion = new OpcionesApuesta();
 			/*Casos de apuesta del usuario*/
 			switch (apuestaUsuario) {
-				case 0:
+/*ARREGLAR*/		case 0:
 					System.out.println("Introduzca los números que desea apostar separados por comas: ");
 					String entradaNumerosApostados = sc.nextLine();
 					
@@ -166,8 +168,7 @@ public class Main {
 					System.out.println("Introduce un número válido por favor");
 					break;
 			}
-			sc.close();
-			
+/*AÑADIR QUE VUELVA AL PRICIPIO SI DEFAULT*/
 			
 	
 			/*MÉTODO TIRADA*/
@@ -180,7 +181,7 @@ public class Main {
 			Ruleta.tiempoEspera(2);
 			
 			/*MENSAJE DE GANADOR/PERDEDOR*/  
-			Ruleta.ganarPerder(rule.getNumerosApostados(), rule.getBanca(), rule.getApuestaFinal(), tirada);
+/*ARREGLAR BUCLE*/	Ruleta.ganarPerder(rule.getNumerosApostados(), rule.getBanca(), rule.getApuestaFinal(), tirada);
 	    
 		}
 	}
