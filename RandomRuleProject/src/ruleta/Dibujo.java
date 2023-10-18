@@ -2,7 +2,7 @@ package ruleta;
 
 public class Dibujo {
 
-void dibujoini () {
+static void dibujoini () {
 		
 		/*DIBUJO INICIAL*/
 		System.out.println("*".repeat(120));

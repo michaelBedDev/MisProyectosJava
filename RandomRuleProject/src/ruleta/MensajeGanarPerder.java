@@ -2,7 +2,7 @@ package ruleta;
 
 public class MensajeGanarPerder {
 
-	void ganarPerder (int [] numerosApostados, float banca, double apuestaFinal, int tirada) {
+	static void ganarPerder (int [] numerosApostados, float banca, double apuestaFinal, int tirada) {
 		
 		
 		for (int elemento : numerosApostados) {

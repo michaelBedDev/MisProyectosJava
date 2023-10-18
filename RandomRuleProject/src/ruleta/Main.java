@@ -11,9 +11,8 @@ public class Main {
 
 		/*MÉTODO DIBUJAR MENSAJE INICIAL*/
 		//Print inicial
-		Dibujo dibujoprint = new Dibujo(); //NECESITO INSTANCIAR UN METODO EN UN OBJETO SIEMPREPARA QUE FUNCIONE NO EN UNA CLASE
-		dibujoprint.dibujoini(); /*ES LO MISMO QUE  rule.dibujoprint = dibujoprint;
-		                                            rule.dibujoprint.dibujoini(); */
+		 
+		Dibujo.dibujoini();
 		
 
 //AQUI HAY UN LOOP if BANCA > 0. QUIZAS SE DEBERIA INTRODUCIR TODO EL EL LOOP A PARTIR DE AQUI?
@@ -29,16 +28,14 @@ public class Main {
 		/*MÉTODO TIRADA*/
 	    rule.giro.tirada(); //Lanzamos la bolita 
 			
-	
 		/*METODO ROJO NEGRO O 0*/
-		rule.color_paridad.RojoNegro0(rule.giro.tirada());
-			
+		RojoNegro_0.RojoNegro0(rule.giro.tirada());
 			
 		/*Otro temporizador más*//*METODO TIEMPO ESPERA*/
-	    rule.pausa.tiempoEspera(2);
+	    Temporizador.tiempoEspera(2);
 			
 		/*MENSAJE DE GANADOR/PERDEDOR*/  
-	    rule.mensaje.ganarPerder(numerosApostados, banca, apuestaFinal, rule.giro.tirada());
+	    MensajeGanarPerder.ganarPerder(numerosApostados, banca, apuestaFinal, rule.giro.tirada());
 			
 		
 			

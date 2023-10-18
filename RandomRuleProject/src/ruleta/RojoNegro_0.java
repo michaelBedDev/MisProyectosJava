@@ -2,7 +2,7 @@ package ruleta;
 
 public class RojoNegro_0 {
 
-	void RojoNegro0(int tirada) {
+	static void RojoNegro0(int tirada) {
 		/*CUALIDADES DE LA TIRADA*/
 		String tiradaParidad = null;
 		String tiradaPasaFalta = null;
