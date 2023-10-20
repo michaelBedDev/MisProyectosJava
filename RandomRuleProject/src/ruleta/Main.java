@@ -24,7 +24,7 @@ public class Main {
 		
 //ARREGLAR LA BANCA NO PUEDE SER NEGATIVA		
 		//AQUI HAY UN LOOP if BANCA > 0
-		while (rule.banca > 0) {
+		while (rule.getBanca() > 0) {
 			
 
 			/*HACEMOS PRINT AL USUARIO DE LAS APUESTAS POSIBLES Y RECOGEMOS SU OPCION DEL 1 AL 16 POR TECLADO*/
@@ -48,7 +48,7 @@ public class Main {
 			        
 			        // Convertir las cadenas a números enteros y almacenarlos en la matriz
 			        for (int i = 0; i < cadenaNumerosApostados.length; i++) {
-			        	seleccionApuesta[i] = Integer.parseInt(cadenaNumerosApostados[i]);
+/*REVISAR*/	        	seleccionApuesta[i] = Integer.parseInt(cadenaNumerosApostados[i]);
 			        	rule.setNumerosApostados(seleccionApuesta);
 			        }
 			        break;
@@ -175,13 +175,13 @@ public class Main {
 			int tirada = rule.tiradaRuleta(); //Lanzamos la bolita 
 			
 			/*METODO ROJO NEGRO O 0*/
-			Ruleta.comprobacionRojoNegro0(tirada);
+			rule.comprobacionRojoNegro0(tirada);
 			
 			/*Otro temporizador más*//*METODO TIEMPO ESPERA*/
 			Ruleta.tiempoEspera(2);
 			
 			/*MENSAJE DE GANADOR/PERDEDOR*/  
-/*ARREGLAR BUCLE*/	Ruleta.ganarPerder(rule.getNumerosApostados(), rule.getBanca(), rule.getApuestaFinal(), tirada);
+/*ARREGLAR BUCLE*/	rule.ganarPerder(rule.getNumerosApostados(), tirada);
 	    
 		}
 	}

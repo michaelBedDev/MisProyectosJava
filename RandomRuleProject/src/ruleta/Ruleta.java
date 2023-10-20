@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class Ruleta {
 
-	OpcionesApuesta opciones;
-	int [] numerosApostados;
-	double apuestaFinal;
+	private OpcionesApuesta opciones;
+	private int [] numerosApostados;
+	private double apuestaFinal;
 	double banca;
 
 	
@@ -15,10 +15,7 @@ public class Ruleta {
 	Ruleta(double d) {
 		setBanca(d);
 	}
-	
-	Ruleta() {
-		
-	}
+	Ruleta() {}
 	
 
     //DIBUJO INICIAL
@@ -73,11 +70,11 @@ public class Ruleta {
     
     
     //COMPROBACIÓN ROJO NEGRO / PAR IMPAR / FALTA PASA
-    static void comprobacionRojoNegro0(int tirada) {
+    void comprobacionRojoNegro0(int tirada) {
 		/*CUALIDADES DE LA TIRADA*/
-		String tiradaParidad = null;
-		String tiradaPasaFalta = null;
-		String tiradaRojoNegro = null;
+		String tiradaParidad;
+		String tiradaPasaFalta;
+		String tiradaRojoNegro;
 		
 		/*APLICAMOS ATRIBUTOS*/
 		tiradaParidad = (tirada%2 == 0) ? "Par" : "Impar";
@@ -113,17 +110,28 @@ public class Ruleta {
     
     
     //METODO MENSAJE GANADOR o PERDEDOR
-    static void ganarPerder (int [] numerosApostados, double banca, double apuestaFinal, int tirada) {
-		
+    void ganarPerder (int [] numerosApostados, int tirada) {
+		int tiradaFinal= 99;
 		for (int elemento : numerosApostados) {
             if (elemento == tirada) {
-                System.out.println("Enhorabuena, tu apuesta ha sido ganadora.");
-                System.out.println("Tu nueva cantidad es de " + (banca+apuestaFinal*36));   
-            }else {
-            	System.out.println("Lo sentimos, no has ganado esta vez.");
-            	System.out.println("Tu nueva cantidad es de " + banca);
+            	tiradaFinal = elemento; 
+            }else {   
             }
+		}
+        if(tiradaFinal!=99) {
+        	System.out.println("Enhorabuena, tu apuesta ha sido ganadora.");
+        	double elemento = this.getBanca() + (this.apuestaFinal*36);
+            System.out.println("Tu nueva cantidad es de " + elemento);
+            this.setBanca(elemento);;
+            System.out.println();
+        }else {
+        	System.out.println("Lo sentimos, no has ganado esta vez.");
+        	double elemento = this.getBanca();
+            System.out.println("Tu nueva cantidad es de " + elemento);
+            this.setBanca(elemento);
+            System.out.println();
         }
+        
     }
     
     
@@ -145,6 +153,13 @@ public class Ruleta {
 	}
 	public void setBanca(double banca) {
 		this.banca = banca;
+	}
+	public OpcionesApuesta getOpciones() {
+		return opciones;
+	}
+	public void setOpciones(OpcionesApuesta opciones) {
+		this.opciones = opciones;
+		
 	}
 
 		
