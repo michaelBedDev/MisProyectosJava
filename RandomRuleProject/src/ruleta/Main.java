@@ -33,6 +33,7 @@ public class Main {
 			//Recogemos por teclado el tipo de apuesta seleccionado por el usuario (opciones 1-16)
 			int apuestaUsuario = sc.nextInt();
 			int apuesta; //Preguntamos al usuario el importe a apostar
+			sc.nextLine();
 				
 			OpcionesApuesta seleccion = new OpcionesApuesta();
 			/*Casos de apuesta del usuario*/
