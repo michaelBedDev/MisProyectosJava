@@ -8,6 +8,7 @@ public class Ruleta {
 	private OpcionesApuesta opciones;
 	private int [] numerosApostados;
 	private double apuestaFinal;
+	double apuesta;
 	double banca;
 
 	
@@ -84,16 +85,16 @@ public class Ruleta {
 		if(tirada == 0) {
 			System.out.println("Ha salido el " + tirada);
 		}else if((tirada%2 ==0) && ((tirada>=1 && tirada <= 10) || (tirada>=19 && tirada<=28))) {
-			tiradaRojoNegro = "Rojo";
+			tiradaRojoNegro = "Negro";
 			System.out.printf("%d, %S, %S y %S" ,tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
 		}else if ((tirada%2 ==1) && ((tirada>=1 && tirada <= 10) || (tirada>=19 && tirada<=28))) {
-			tiradaRojoNegro = "Negro";
+			tiradaRojoNegro = "Rojo";
 			System.out.printf("%d, %S, %S y %S" ,tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
 		}else if ((tirada%2 ==0) && ((tirada>=11 && tirada <= 18) || (tirada>=29 && tirada<=36))) {
-			tiradaRojoNegro = "Negro";
+			tiradaRojoNegro = "Rojo";
 			System.out.printf("%d, %S, %S y %S" ,tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
 		}else if ((tirada%2 ==1) && ((tirada>=11 && tirada <= 18) || (tirada>=29 && tirada<=36))) {
-			tiradaRojoNegro = "Rojo";
+			tiradaRojoNegro = "Negro";
 			System.out.printf("%d, %S, %S y %S" ,tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
 		}	
 		
@@ -111,18 +112,19 @@ public class Ruleta {
     
     //METODO MENSAJE GANADOR o PERDEDOR
     void ganarPerder (int [] numerosApostados, int tirada) {
-		int tiradaFinal= 99;
-		for (int elemento : numerosApostados) {
-            if (elemento == tirada) {
-            	tiradaFinal = elemento; 
+		int tiradaFinal= 99; //Si tirada aparece dentro del array de numeros apostados tiradaFinal == elemento, si no, la tirada será un numero imposible como 99
+		for (int numero : numerosApostados) {
+            if (numero == tirada) {
+            	tiradaFinal = numero; 
             }else {   
             }
 		}
+		//si la tirada es 99 quiere decir que la la tirada no está dentro de tus números apostados y que has perdido. 
         if(tiradaFinal!=99) {
         	System.out.println("Enhorabuena, tu apuesta ha sido ganadora.");
         	double elemento = this.getBanca() + (this.apuestaFinal*36);
             System.out.println("Tu nueva cantidad es de " + elemento);
-            this.setBanca(elemento);;
+            this.setBanca(elemento);
             System.out.println();
         }else {
         	System.out.println("Lo sentimos, no has ganado esta vez.");
@@ -160,6 +162,12 @@ public class Ruleta {
 	public void setOpciones(OpcionesApuesta opciones) {
 		this.opciones = opciones;
 		
+	}
+	public double getApuesta() {
+		return apuesta;
+	}
+	public void setApuesta(double apuesta) {
+		this.apuesta = apuesta;
 	}
 
 		
