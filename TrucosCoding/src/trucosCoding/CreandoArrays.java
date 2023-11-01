@@ -1,4 +1,4 @@
-package TrucosCoding;
+package trucosCoding;
 
 public class CreandoArrays {
 
