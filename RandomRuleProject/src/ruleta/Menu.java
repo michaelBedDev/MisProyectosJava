@@ -1,18 +1,12 @@
 package ruleta;
 
 public class Menu {
-
 	
-    //METODO TEMPORIZADOR
-    static void tiempoEspera (int pausaVeces) throws InterruptedException {
-		for (int i = pausaVeces; i > 0; i--) {
-	          Thread.sleep(1000); // Pausa durante 1 segundo (1000 milisegundos)
-	    }
-	}
+	//METODOS
     
     
-    //DIBUJO INICIAL
-    static void dibujoini () {
+    /*DIBUJO INICIAL*/
+    public void dibujoini () {
 		
 		/*DIBUJO INICIAL*/
 		System.out.println("*".repeat(120));
@@ -36,9 +30,14 @@ public class Menu {
 		System.out.println();
 	}
     
+    /*METODO TEMPORIZADOR*/
+    public static void tiempoEspera (int pausaVeces) throws InterruptedException {
+		for (int i = pausaVeces; i > 0; i--) {
+	          Thread.sleep(1000); // Pausa durante 1 segundo (1000 milisegundos)
+	    }
+	}
     
-    
-    
+}}}
     
     
     

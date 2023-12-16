@@ -1,66 +1,106 @@
 package ruleta;
 
-import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class Ruleta {
 
-	private OpcionesApuesta opciones;
-	private int [] numerosApostados;
-	private double apuestaFinal;
-	double apuesta;
-	double banca = 1;
+	private EstadoJuego estado;
+	private Jugador jugador;
+	private Menu menu;
+	private double banca;
+	private double cantidadApuesta;
+	private int tirada;
+	private int [] numApostados;
+	private Scanner sc;
 
 	
 	//CONSTRUCTORES
 
-	
+	Ruleta(){
+		//Asignamos menu
+		Menu menu = new Menu();
+		this.menu = menu;
+		
+		menu.dibujoini();
+		
+		/*SET CANTIDAD INICIAL*/
+		System.out.println("Cuál es su cantidad inicial introducida? en €");
+		this.sc = new Scanner(System.in);
+		this.setBanca(sc.nextDouble()); /*SET CANTIDAD INICIAL*/   
+	}
 
    
 	
  
 	
-    
-    
-    
-    
-    
-    
+	//METODOS
+	
+	/*Mostrar Saldo Actual*/
+	private void mostrarSaldo() {
+		 System.out.println("Tu banca actual es de: " + this.getBanca());
+	
+	}
 
-    
-    
+
+
+
     //GETTERS AND SETTERS
-	public int[] getNumerosApostados() {
-		return numerosApostados;
+	public EstadoJuego getEstado() {
+		return estado;
 	}
-	public void setNumerosApostados(int[] numerosApostados) {
-		this.numerosApostados = numerosApostados;
+
+	public void setEstado(EstadoJuego estado) {
+		this.estado = estado;
 	}
-	public double getApuestaFinal() {
-		return apuestaFinal;
+
+	public Jugador getJugador() {
+		return jugador;
 	}
-	public void setApuestaFinal(double apuestaFinal) {
-		this.apuestaFinal = apuestaFinal;
+
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
 	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+
 	public double getBanca() {
 		return banca;
 	}
+
 	public void setBanca(double banca) {
 		this.banca = banca;
 	}
-	public OpcionesApuesta getOpciones() {
-		return opciones;
+
+	public double getCantidadApuesta() {
+		return cantidadApuesta;
 	}
-	public void setOpciones(OpcionesApuesta opciones) {
-		this.opciones = opciones;
-		
+
+	public void setCantidadApuesta(double cantidadApuesta) {
+		this.cantidadApuesta = cantidadApuesta;
 	}
-	public double getApuesta() {
-		return apuesta;
+
+	public int getTirada() {
+		return tirada;
 	}
-	public void setApuesta(double apuesta) {
-		this.apuesta = apuesta;
+
+	public void setTirada(int tirada) {
+		this.tirada = tirada;
 	}
-	
+
+	public int[] getNumApostados() {
+		return numApostados;
+	}
+
+	public void setNumApostados(int[] numApostados) {
+		this.numApostados = numApostados;
+	}
 }
+	
+
 

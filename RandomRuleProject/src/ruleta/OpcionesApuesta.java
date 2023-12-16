@@ -19,7 +19,7 @@ public class OpcionesApuesta {
 	int [] huerfanos = {1,20,14,31,9,17,34,6};
 	int [] serie_58 = {27,13,36,11,30,8,23,10,5,24,16,33};
 	
-	static void printApuestasPosibles () {
+	public void printApuestasPosibles () {
 		System.out.println("A qué deseas apostar?");
 		System.out.println("Número cualquiera \t [0]");
 		System.out.println("Rojo \t\t[1]");
