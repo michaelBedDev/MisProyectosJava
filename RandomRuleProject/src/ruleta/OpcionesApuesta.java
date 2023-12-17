@@ -21,7 +21,7 @@ public class OpcionesApuesta {
 	
 	public void printApuestasPosibles () {
 		System.out.println("A qué deseas apostar?");
-		System.out.println("Número cualquiera \t [0]");
+		System.out.println("Número cualquiera [0]");
 		System.out.println("Rojo \t\t[1]");
 		System.out.println("Negro \t\t[2]");
 		System.out.println("Par \t\t[3]");
