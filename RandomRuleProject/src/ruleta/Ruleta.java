@@ -8,42 +8,36 @@ public class Ruleta {
 	private double banca;
 	private double cantidadApuesta;
 	private int tirada;
-	private int [] numApostados;
+	private int[] numApostados;
 	private int cuantosNumerosApostados;
 	private double apuestaDividida;
-	
+
 	private Menu menu;
 	private OpcionesApuesta opcionesApuesta;
 	private Scanner sc;
 
-	
-	//CONSTRUCTORES
+	// CONSTRUCTORES
 
-	
-	Ruleta(){
-		//Asignamos menu
+	Ruleta() {
+		// Asignamos menu
 		Menu menu = new Menu();
 		this.menu = menu;
-		
+
 		menu.dibujoini();
-		
-		/*SET CANTIDAD INICIAL*/
+
+		/* SET CANTIDAD INICIAL */
 		System.out.println("Cuál es su cantidad inicial introducida? en €");
 		this.sc = new Scanner(System.in);
 		do {
-			this.setBanca(sc.nextDouble()); /*SET CANTIDAD INICIAL*/
+			this.setBanca(sc.nextDouble()); /* SET CANTIDAD INICIAL */
 			if (this.banca < 0)
 				System.out.println("Por favor, introduce un número positivo. Inténtalo nuevamente");
-		}while(this.banca < 0);
+		} while (this.banca < 0);
 	}
 
-   
-	
+	// METODOS
 
-	
-	//METODOS
-	
-	public void jugar() throws InterruptedException {	
+	public void jugar() throws InterruptedException {
 
 		OpcionesApuesta op = new OpcionesApuesta();
 		this.opcionesApuesta = op;
@@ -51,59 +45,53 @@ public class Ruleta {
 			if (this.banca <= 0)
 				break;
 			op.printApuestasPosibles();
-			
+
 			seleccionarTipoApuesta(op);
 			introducirImporteApuesta();
-			
+
 			tirarRuleta();
 			comprobarTirada(this.tirada);
-			
-			ganarPerder(this.numApostados,this.tirada);
-		}while(this.banca > 0);
+
+			ganarPerder(this.numApostados, this.tirada);
+		} while (this.banca > 0);
 	}
-	
-	
-	
-	
-	
-	
-	
-	//METODOS PRIVADOS
-	
+
+	// METODOS PRIVADOS
+
 	private void mostrarSaldo() {
-		/*Mostrar Saldo Actual*/
-		 System.out.println("Tu banca actual es de: " + this.getBanca());
-	
+		/* Mostrar Saldo Actual */
+		System.out.println("Tu banca actual es de: " + this.getBanca());
+
 	}
-	
+
 	private void seleccionarTipoApuesta(OpcionesApuesta op) {
-		/*Metodo seleccion 1-16*/
+		/* Metodo seleccion 1-16 */
 		int seleccion0_16;
-		
+
 		do {
 			seleccion0_16 = sc.nextInt();
 			sc.nextLine();
-		}while (seleccion0_16 < 0 || seleccion0_16 > 16);
-			
-			
-		/*Casos de apuesta del usuario*/
+		} while (seleccion0_16 < 0 || seleccion0_16 > 16);
+
+		/* Casos de apuesta del usuario */
 		switch (seleccion0_16) {
 			case 0:
 				System.out.println("Introduzca los números que desea apostar separados por comas: ");
 				String entradaNumerosApostados = sc.nextLine();
-				
-				String[] entradaNumerosApostadosArrayString = entradaNumerosApostados.split(","); //Lo convertimos a array
-		        
-		        // Crear un array de int con la longitud del array string
-		        int []numApostadosArrayInt = new int[entradaNumerosApostadosArrayString.length];
-		        
-		        // Convertir las cadenas a números enteros y almacenarlos en el array int
-		        for (int i = 0; i < entradaNumerosApostadosArrayString.length; i++) {
-		        	numApostadosArrayInt[i] = Integer.parseInt(entradaNumerosApostadosArrayString[i]);
-		        	this.numApostados = numApostadosArrayInt;
-		        }	
-		        break;
-		        
+
+				String[] entradaNumerosApostadosArrayString = entradaNumerosApostados.split(","); // Lo convertimos a
+																									// array
+
+				// Crear un array de int con la longitud del array string
+				int[] numApostadosArrayInt = new int[entradaNumerosApostadosArrayString.length];
+
+				// Convertir las cadenas a números enteros y almacenarlos en el array int
+				for (int i = 0; i < entradaNumerosApostadosArrayString.length; i++) {
+					numApostadosArrayInt[i] = Integer.parseInt(entradaNumerosApostadosArrayString[i]);
+					this.numApostados = numApostadosArrayInt;
+				}
+				break;
+
 			case 1:
 				this.numApostados = op.rojo;
 				break;
@@ -157,126 +145,107 @@ public class Ruleta {
 				break;
 		}
 	}
-				
+
 	private void introducirImporteApuesta() {
-		//Preguntar al usuario el importe a apostar
-        System.out.println("Introduce el importe a apostar");
+		// Preguntar al usuario el importe a apostar
+		System.out.println("Introduce el importe a apostar");
 		int cantidadApuesta;
-		 
+
 		do {
 			cantidadApuesta = sc.nextInt();
-			if(cantidadApuesta > this.banca) {
-			mostrarSaldo();
-			System.out.println("Por favor, introduce un importe más bajo");
+			if (cantidadApuesta > this.banca) {
+				mostrarSaldo();
+				System.out.println("Por favor, introduce un importe más bajo");
 			}
-		}while (cantidadApuesta > this.banca);
-		
+		} while (cantidadApuesta > this.banca);
+
 		this.cantidadApuesta = cantidadApuesta;
 		this.banca -= this.cantidadApuesta;
-		
-		this.cuantosNumerosApostados = this.numApostados.length;
-		
-		 this.setApuestaDividida(this.cantidadApuesta/this.cuantosNumerosApostados);
-	}
-			
-				
-	
 
-    private int tirarRuleta () throws InterruptedException {
-    	//Metodo tirada ruleta
-		/*NUMERO RANDOM*/
-		SecureRandom rand = new SecureRandom(); /*IMPORT RANDOM*/
-        int upperbound = 37; /*NUMERO MAXIMO*/
+		this.cuantosNumerosApostados = this.numApostados.length;
+
+		this.setApuestaDividida(this.cantidadApuesta / this.cuantosNumerosApostados);
+	}
+
+	private int tirarRuleta() throws InterruptedException {
+		// Metodo tirada ruleta
+		/* NUMERO RANDOM */
+		SecureRandom rand = new SecureRandom(); /* IMPORT RANDOM */
+		int upperbound = 37; /* NUMERO MAXIMO */
 		int tirada = rand.nextInt(upperbound);
-		
-		/*APLICAMOS UNA PAUSA EN SEGUNDOS*/
+
+		/* APLICAMOS UNA PAUSA EN SEGUNDOS */
 		System.out.println("No va más");
 		int pausaVeces = 4;
-		
-		//ARRAY PARA IMPRIMIR MENSAJE POR PANTALLA
-        String[] lanzamientoBola = {"","Lanzamos la bolita","Gira, gira","AY ESE REBOTE"};
-        for (int i = pausaVeces; i > 0; i--) {
-        	System.out.println(lanzamientoBola[pausaVeces - i]); // Muestra el mensaje correspondiente
-            Thread.sleep(2000); // Pausa durante 2 segundo (2000 milisegundos)
-            }
-        
-        System.out.println();
-		return tirada;
-    }
-	
-	
-  //COMPROBACIÓN ROJO NEGRO / PAR IMPAR / FALTA PASA
-    private void comprobarTirada(int tirada) {
-    	/*CUALIDADES DE LA TIRADA*/
-    	String tiradaParidad;
-    	String tiradaPasaFalta;
-    	String tiradaRojoNegro;
-    	
-    	/*APLICAMOS ATRIBUTOS*/
-    	tiradaParidad = (tirada%2 == 0) ? "Par" : "Impar";
-    	tiradaPasaFalta = (tirada >= 19) ? "Pasa" : "Falta";
-    	
-    	/*TIRADA ROJO NEGRO O "0"*/
-    	if(tirada == 0) {
-    		System.out.println("Ha salido el " + tirada);
-    	}else if((tirada%2 ==0) && ((tirada>=1 && tirada <= 10) || (tirada>=19 && tirada<=28))) {
-    		tiradaRojoNegro = "Negro";
-    		System.out.printf("%d, %S, %S y %S" ,tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
-    	}else if ((tirada%2 ==1) && ((tirada>=1 && tirada <= 10) || (tirada>=19 && tirada<=28))) {
-    		tiradaRojoNegro = "Rojo";
-    		System.out.printf("%d, %S, %S y %S" ,tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
-    	}else if ((tirada%2 ==0) && ((tirada>=11 && tirada <= 18) || (tirada>=29 && tirada<=36))) {
-    		tiradaRojoNegro = "Rojo";
-    		System.out.printf("%d, %S, %S y %S" ,tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
-    	}else if ((tirada%2 ==1) && ((tirada>=11 && tirada <= 18) || (tirada>=29 && tirada<=36))) {
-    		tiradaRojoNegro = "Negro";
-    		System.out.printf("%d, %S, %S y %S" ,tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
-    	}	
-    	
-    	System.out.println();
-    	
-    }
-	
-	
-  //METODO MENSAJE GANADOR o PERDEDOR
-    private void ganarPerder (int [] numerosApostados, int tirada) {
-		boolean acierto = false; 
-		for (int numero : numerosApostados) {
-            if (numero == tirada) {
-            	acierto = true; 
-            }
+
+		// ARRAY PARA IMPRIMIR MENSAJE POR PANTALLA
+		String[] lanzamientoBola = { "", "Lanzamos la bolita", "Gira, gira", "AY ESE REBOTE" };
+		for (int i = pausaVeces; i > 0; i--) {
+			System.out.println(lanzamientoBola[pausaVeces - i]); // Muestra el mensaje correspondiente
+			Thread.sleep(2000); // Pausa durante 2 segundo (2000 milisegundos)
 		}
-		
-		
-        if(acierto) {
-        	System.out.println("Enhorabuena, tu apuesta ha sido ganadora.");
-        	double cantidadFinal = this.getBanca() + (this.apuestaDividida*36);
-            System.out.println("Tu nueva cantidad es de " + cantidadFinal);
-            this.setBanca(cantidadFinal);
-            System.out.println();
-        }else {
-        	System.out.println("Lo sentimos, no has ganado esta vez.");
-        	double cantidadFinal = this.getBanca();
-            System.out.println("Tu nueva cantidad es de " + cantidadFinal);
-            this.setBanca(cantidadFinal);
-            System.out.println();
-        }
-    }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+		System.out.println();
+		return tirada;
+	}
 
-    //GETTERS AND SETTERS
+	// COMPROBACIÓN ROJO NEGRO / PAR IMPAR / FALTA PASA
+	private void comprobarTirada(int tirada) {
+		/* CUALIDADES DE LA TIRADA */
+		String tiradaParidad;
+		String tiradaPasaFalta;
+		String tiradaRojoNegro;
+
+		/* APLICAMOS ATRIBUTOS */
+		tiradaParidad = (tirada % 2 == 0) ? "Par" : "Impar";
+		tiradaPasaFalta = (tirada >= 19) ? "Pasa" : "Falta";
+
+		/* TIRADA ROJO NEGRO O "0" */
+		if (tirada == 0) {
+			System.out.println("Ha salido el " + tirada);
+		} else if ((tirada % 2 == 0) && ((tirada >= 1 && tirada <= 10) || (tirada >= 19 && tirada <= 28))) {
+			tiradaRojoNegro = "Negro";
+			System.out.printf("%d, %S, %S y %S", tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
+		} else if ((tirada % 2 == 1) && ((tirada >= 1 && tirada <= 10) || (tirada >= 19 && tirada <= 28))) {
+			tiradaRojoNegro = "Rojo";
+			System.out.printf("%d, %S, %S y %S", tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
+		} else if ((tirada % 2 == 0) && ((tirada >= 11 && tirada <= 18) || (tirada >= 29 && tirada <= 36))) {
+			tiradaRojoNegro = "Rojo";
+			System.out.printf("%d, %S, %S y %S", tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
+		} else if ((tirada % 2 == 1) && ((tirada >= 11 && tirada <= 18) || (tirada >= 29 && tirada <= 36))) {
+			tiradaRojoNegro = "Negro";
+			System.out.printf("%d, %S, %S y %S", tirada, tiradaRojoNegro, tiradaParidad, tiradaPasaFalta);
+		}
+
+		System.out.println();
+
+	}
+
+	// METODO MENSAJE GANADOR o PERDEDOR
+	private void ganarPerder(int[] numerosApostados, int tirada) {
+		boolean acierto = false;
+		for (int numero : numerosApostados) {
+			if (numero == tirada) {
+				acierto = true;
+			}
+		}
+
+		if (acierto) {
+			System.out.println("Enhorabuena, tu apuesta ha sido ganadora.");
+			double cantidadFinal = this.getBanca() + (this.apuestaDividida * 36);
+			System.out.println("Tu nueva cantidad es de " + cantidadFinal);
+			this.setBanca(cantidadFinal);
+			System.out.println();
+		} else {
+			System.out.println("Lo sentimos, no has ganado esta vez.");
+			double cantidadFinal = this.getBanca();
+			System.out.println("Tu nueva cantidad es de " + cantidadFinal);
+			this.setBanca(cantidadFinal);
+			System.out.println();
+		}
+	}
+
+	// GETTERS AND SETTERS
 
 	public Menu getMenu() {
 		return menu;
@@ -325,7 +294,7 @@ public class Ruleta {
 	public void setOpcionesApuesta(OpcionesApuesta opcionesApuesta) {
 		this.opcionesApuesta = opcionesApuesta;
 	}
-	
+
 	public int getCuantosNumerosApostados() {
 		return cuantosNumerosApostados;
 	}
@@ -337,12 +306,9 @@ public class Ruleta {
 	public double getApuestaDividida() {
 		return apuestaDividida;
 	}
-	
+
 	public void setApuestaDividida(double apuestaDividida) {
 		this.apuestaDividida = apuestaDividida;
 	}
 
 }
-	
-
-
