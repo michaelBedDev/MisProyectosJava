@@ -147,8 +147,6 @@ public class Peso {
 			}
 		}
 		
-		
-		
 		return tipoDisco;
 	}
 

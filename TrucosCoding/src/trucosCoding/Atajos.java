@@ -17,3 +17,7 @@ public class Atajos {
 //	CTRL+F11	EJECUTAR EL PROGRAMA
 //	CTRL+ALT+H	CALL HIERARCHY
 }
+
+
+//Atajo para crear instancia?
+//Atajo para implementar metodos?
