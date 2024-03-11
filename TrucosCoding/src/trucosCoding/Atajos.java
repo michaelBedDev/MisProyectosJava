@@ -18,6 +18,7 @@ public class Atajos {
 //	CTRL+ALT+H	CALL HIERARCHY
 }
 
+//ALT + SHIFT + S + H		GENERA HASHCODE Y EQUALS
 
 //Atajo para crear instancia?
 //Atajo para implementar metodos?
